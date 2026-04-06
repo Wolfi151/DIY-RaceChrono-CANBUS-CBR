@@ -224,11 +224,11 @@ void loop() {
                     }
                 }
 
-                uint8_t dataV_Av[2] = {msg.data[3],msg.data[4]};
+                uint8_t dataV_Av[2] = {msg.data[1],msg.data[2]};
                 uint8_t ValdataV_Av[2] = { dataV_Av[0], dataV_Av[1] };
                 RaceChronoBle.sendCanData(0x051, ValdataV_Av, 2);
 
-                uint8_t dataV_Ar[2] = {msg.data[1],msg.data[2]};
+                uint8_t dataV_Ar[2] = {msg.data[3],msg.data[4]};
                 uint8_t ValdataV_Ar[2] = { dataV_Ar[0], dataV_Ar[1] };
                 RaceChronoBle.sendCanData(0x052, ValdataV_Ar, 2);
 
@@ -247,9 +247,9 @@ void loop() {
           
             // ID 0x1DC: Régime moteur (RPM)
             case 0x1DC: {
-                uint8_t data_Rpm[2] = { msg.data[2], msg.data[3] };
-                uint8_t ValData_Rpm[2] = { data_Rpm[0], data_Rpm[1] };
-                RaceChronoBle.sendCanData(0x01DC, ValData_Rpm, 2);
+                uint8_t data_Rpm[3] = { msg.data[1], msg.data[2], msg.data[3] };
+                uint8_t ValData_Rpm[3] = { data_Rpm[0], data_Rpm[1], data_Rpm[2] };
+                RaceChronoBle.sendCanData(0x01DC, ValData_Rpm, 3);
                 break;
            }
 
